@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  servicea:
+    image: servicea
+    build:
+      context: ./ServiceA
+      dockerfile: Dockerfile
+
+  serviceb:
+    image: serviceb
+    build:
+      context: ./ServiceB
+      dockerfile: Dockerfile
+
+  gateway:
+    image: gateway
+    build:
+      context: ./Gateway
+      dockerfile: Dockerfile
