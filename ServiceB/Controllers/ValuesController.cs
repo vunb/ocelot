@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ServiceB.Controllers
 {
-    [Route("values")]
+    [Route("api/values")]
     public class ValuesController : Controller
     {
         // GET api/values

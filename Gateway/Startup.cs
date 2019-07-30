@@ -19,7 +19,7 @@ namespace Gateway
             .SetBasePath(env.ContentRootPath)
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
             .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-            .AddJsonFile("configuration.json")
+            .AddJsonFile("ocelot.json", true, true)
             .AddEnvironmentVariables();
 
             Configuration = builder.Build();
