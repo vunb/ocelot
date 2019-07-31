@@ -8,3 +8,7 @@ To find out more about Ocelot, you can check their official [documentation](http
 
 * Microsoft Visual Studio Community 2017 15.9+
 * Docker
+
+### Deployment
+
+> dotnet publish Gateway\Gateway.csproj -r win10-x64

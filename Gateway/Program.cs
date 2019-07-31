@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Topshelf;
 
 namespace Gateway
 {
@@ -8,20 +9,22 @@ namespace Gateway
     {
         public static void Main(string[] args)
         {
+            HostFactory.Run(windowsService =>
+            {
+                windowsService.Service<WebServer>(s =>
+                {
+                    s.ConstructUsing(service => new WebServer());
+                    s.WhenStarted(service => service.Start());
+                    s.WhenStopped(service => service.Stop());
+                });
 
-            IWebHostBuilder builder = new WebHostBuilder();
+                windowsService.RunAsLocalSystem();
+                windowsService.StartAutomatically();
 
-            builder.ConfigureServices(s => {
-                s.AddSingleton(builder);
+                windowsService.SetDescription("Ocelot API Gateway");
+                windowsService.SetDisplayName("API Gateway");
+                windowsService.SetServiceName("API Gateway");
             });
-
-            builder.UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseStartup<Startup>();
-
-            var host = builder.Build();
-
-            host.Run();
         }
     }
 }

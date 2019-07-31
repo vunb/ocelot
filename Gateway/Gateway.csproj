@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +13,8 @@
   <ItemGroup>
     <PackageReference Include="Ocelot" Version="13.5.2" />
     <PackageReference Include="Ocelot.Cache.CacheManager" Version="13.5.2" />
+    <PackageReference Include="Topshelf" Version="4.2.1" />
+    <PackageReference Include="Topshelf.NLog" Version="4.2.1" />
   </ItemGroup>
 
   <ItemGroup>
